@@ -36,8 +36,6 @@ fetchNeighborhoods = () => {
 fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
 
   const select = document.getElementById('neighborhoods-select');
-  select.setAttribute('role', 'listbox');
-  select.setAttribute('aria-label', 'Choose a neighborhood');
 
   neighborhoods.map(neighborhood => {
     const option = document.createElement('option');
@@ -71,8 +69,6 @@ fetchCuisines = () => {
 fillCuisinesHTML = (cuisines = self.cuisines) => {
   // Add a select tag
   const select = document.getElementById('cuisines-select');
-  select.setAttribute('role', 'listbox');
-  select.setAttribute('aria-label', 'Choose a cuisine');
 
   // Add the option tags
   cuisines.map(cuisine => {
@@ -255,9 +251,6 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     const neighborhoodList = new SelectGroup('#neighborhoods-select');
     const cuisinesList = new SelectGroup('#cuisines-select');
   }
-
-document.getElementById("map").setAttribute("role", "application");
-document.getElementById("map").setAttribute("aria-label", "Google Map");
 
 /**
 * @description Create a div and a button in the header of the page to show the map of the restaurant
