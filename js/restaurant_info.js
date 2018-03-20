@@ -11,8 +11,6 @@ window.initMap = () => {
       console.error(error);
     } else {
       const googleMap = document.getElementById('map');
-      googleMap.setAttribute("role", "application");
-      googleMap.setAttribute("aria-label", "Google Map");
       self.map = new google.maps.Map(googleMap, {
         zoom: 16,
         center: restaurant.latlng,
@@ -176,8 +174,6 @@ createReviewHTML = (review) => {
  */
 fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
-  breadcrumb.setAttribute('aria-label', 'Breadcrumb');
-
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
   li.setAttribute('aria-current', 'page');
