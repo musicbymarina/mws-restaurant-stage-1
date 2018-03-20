@@ -28,7 +28,7 @@
 
     <section id="map-container">
 
-      <div id="map"></div>
+      <div id="map" role="application" aria-label="Google Map"></div>
       
     </section>
 
@@ -36,10 +36,10 @@
 
       <div class="filter-options">
         <h2>Filter Results</h2>
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" role="listbox" aria-label="Choose a neighborhood">
           <option value="all">All Neighborhoods</option>
         </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" role="listbox" aria-label="Choose a cuisine">
           <option value="all">All Cuisines</option>
         </select>
       </div>
