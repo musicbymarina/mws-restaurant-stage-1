@@ -174,7 +174,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageResponsiveForRestaurant(restaurant);
-  image.alt = restaurant.name;
+  image.alt = `${restaurant.name} restaurant`;
   picture.prepend(image);
   picture.prepend(source);
 
