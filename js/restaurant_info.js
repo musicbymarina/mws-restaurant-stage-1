@@ -72,10 +72,10 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageResponsiveForRestaurant(restaurant);
-  image.alt = restaurant.name;
+  image.alt = `${restaurant.name} restaurant`;
 
   const figCaption = document.createElement('figcaption');
-  figCaption.textContent = restaurant.name;
+  figCaption.textContent = `${restaurant.name} restaurant`;
 
   figure.prepend(figCaption);
   picture.prepend(image);
