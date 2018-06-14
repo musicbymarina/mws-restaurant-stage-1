@@ -66,12 +66,24 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const figure = document.createElement('figure');
   const picture = document.createElement('picture');
   restaurantContainer.insertBefore(figure, restaurantContainer.childNodes[2]);
+  
   const source = document.createElement('source');
   source.media = '(min-width: 551px)';
   source.srcset = DBHelper.imageUrlForRestaurant(restaurant);
+  
+  const sourceWebPResp = document.createElement('source');
+  sourceWebPResp.media = '(max-width: 550px)';
+  sourceWebPResp.type = 'image/webp';
+  sourceWebPResp.srcset = DBHelper.imageUrlForRestaurant(restaurant).split('.jpg').join('_small.webp');
+
+  const sourceWebP = document.createElement('source');
+  sourceWebP.type = 'image/webp';
+  sourceWebP.srcset = DBHelper.imageUrlForRestaurant(restaurant).split('.jpg').join('.webp');
+
+  
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img';
-  image.src = DBHelper.imageResponsiveForRestaurant(restaurant);
+  image.src = DBHelper.imageUrlForRestaurant(restaurant).split('jpg').join('_small.jpg');
   image.alt = `${restaurant.name} restaurant`;
 
   const figCaption = document.createElement('figcaption');
@@ -80,6 +92,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   figure.prepend(figCaption);
   picture.prepend(image);
   picture.prepend(source);
+  picture.prepend(sourceWebP);
+  picture.prepend(sourceWebPResp);
   figure.prepend(picture);
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;

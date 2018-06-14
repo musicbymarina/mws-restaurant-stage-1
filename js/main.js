@@ -1,17 +1,19 @@
-let restaurants,
-  neighborhoods,
-  cuisines
-var map
-var markers = []
+
+
+let restaurants, neighborhoods, cuisines;
+var map;
+var markers = [];
 
 /**
  * @description Fetch neighborhoods and cuisines as soon as the page is loaded.
  * @param {string} DOMContentLoaded
  * @param {string} Event
  */
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
   fetchNeighborhoods();
   fetchCuisines();
+  updateRestaurants();
+  new IOlazy();
 });
 
 /**
@@ -165,18 +167,33 @@ createRestaurantHTML = (restaurant) => {
   // Create the li tag
   const li = document.createElement('li');
 
-  // Create the picture, source and img tag
+  // Create the picture, sources for responsive and for webp formats and img tag
   const picture = document.createElement('picture');
   li.append(picture);
   const source = document.createElement('source');
   source.media = '(min-width: 551px)';
   source.srcset = DBHelper.imageUrlForRestaurant(restaurant);
+
+  const sourceWebPResp = document.createElement('source');
+  sourceWebPResp.media = '(max-width: 550px)';
+  sourceWebPResp.type = 'image/webp';
+  sourceWebPResp.srcset = DBHelper.imageUrlForRestaurant(restaurant).split('.jpg').join('_small.webp');
+
+  const sourceWebP = document.createElement('source');
+  sourceWebP.type = 'image/webp';
+  sourceWebP.srcset = DBHelper.imageUrlForRestaurant(restaurant).split('.jpg').join('.webp');
+
   const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.src = DBHelper.imageResponsiveForRestaurant(restaurant);
+  image.className = 'restaurant-img lazyload';
+
+  // Use data-src instead of src for lazy load
+  image.setAttribute('data-src', DBHelper.imageUrlForRestaurant(restaurant).split('.jpg').join('_small.jpg'));
+
   image.alt = `${restaurant.name} restaurant`;
   picture.prepend(image);
   picture.prepend(source);
+  picture.prepend(sourceWebP);
+  picture.prepend(sourceWebPResp);
 
   // Create the h3 tag
   const name = document.createElement('h3');
@@ -200,6 +217,9 @@ createRestaurantHTML = (restaurant) => {
   more.setAttribute('aria-label', 'View details of the restaurant ' + restaurant.name);
   li.append(more);
   return li;
+  
+
+  
 }
 
 /**
@@ -335,3 +355,6 @@ linkNeighborhoods.setAttribute('aria-label', linkNeighborhoods.textContent);
 linkNeighborhoods.className = 'skip-main';
 
 skipNav.prepend(linkNeighborhoods);
+
+//document.addEventListener('mousewheel', onTouchStart, {passive: true});
+
