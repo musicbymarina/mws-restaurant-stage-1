@@ -5,18 +5,24 @@
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="application-name" content="Restaurant Reviews around the world. Written by food lovers only.">
+  <meta name="description" content="Restaurant Reviews around the world. Written by food lovers only">
   <!-- Favicon and compatibility for IE-->
   <link rel="icon" type="image/png" href="icon.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="icon-new.png" sizes="512x512">
   <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
 
   <!-- Normalize.css for better cross-browser consistency -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
   <!-- Main CSS file -->
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- Stylesheets for desktop, mobiles and tablets-->
+  <link rel="stylesheet" href="css/styles.css"> 
+  <link rel="stylesheet" href="css/stylesMobile.css" media="(max-width: 500px)"> 
+  <link rel="stylesheet" href="css/stylesTablet.css" media="((min-width: 501px) and (max-width: 850px))"> 
+  
   <title>Restaurant Info</title>
   <!-- Manifest and its theme color to add the app in the homescren -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color">`
+<meta name="theme-color" content="#1c767d">`
 </head>
 
 <body class="inside">
@@ -70,14 +76,14 @@
 
   <!-- Beginning scripts -->
   <!-- Database helpers -->
-<script src="js/dbhelper.js"></script>
+  <script defer src="js/idb.js"></script>
+  <script defer src="js/dbhelper.js"></script>
 
   <!-- Main javascript file -->
-<script src="js/restaurant_info.js"></script>
-<script charset="utf-8" src="js/IndexController.js"></script>
+<script defer src="js/restaurant_info.js"></script>
 
 <!-- Google Maps -->
-<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDSw35kBaDwyI1P_X-LGniza0l9rwSxJ-o&libraries=places&language=en&callback=initMap'></script>
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ_YFNfFK2o9VAscAB_KB_0xZRRfhM8G0&libraries=places&language=en&callback=initMap'></script>
 <!-- End scripts -->
 
 </body>
